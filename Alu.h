@@ -5,7 +5,7 @@ struct result {
     uint16_t flags;
 };
 
-struct Flags {
+typedef struct {
     uint16_t zero:1;
     uint16_t negative:1;
     uint16_t carry:1;
@@ -19,11 +19,11 @@ struct Flags {
     uint16_t halfcarry7:1;
     uint16_t sign:1;
     uint16_t bitWidth:2;
-};
+} Flags_t;
 
 class Alu {
-    
-    Flags flags;
+
+    Flags_t flags;
 
     result addition(uint32_t operand1, uint32_t operand2);
 

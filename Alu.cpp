@@ -29,7 +29,7 @@
 #define BIT_WIDTH_REPRESENTATION_16 0b10000000000000
 #define BIT_WIDTH_REPRESENTATION_32 0b100000000000000
 
-result addition(uint32_t operand1, uint32_t operand2) {
+result Alu::addition(uint32_t operand1, uint32_t operand2) {
     uint64_t resultInt = 0;
     result resultStruct{};
     
@@ -43,7 +43,7 @@ result addition(uint32_t operand1, uint32_t operand2) {
     return resultStruct;
 }
 
-result substraction(uint32_t operand1, uint32_t operand2) {
+result Alu::substraction(uint32_t operand1, uint32_t operand2) {
    uint64_t resultInt = 0;
    result resultStruct{};
    test = 1;
@@ -59,29 +59,29 @@ result substraction(uint32_t operand1, uint32_t operand2) {
 
 }
 
-result multiplication(uint32_t operand1, uint32_t operand2, uint16_t flags) {
+result Alu::multiplication(uint32_t operand1, uint32_t operand2, uint16_t flags) {
     uint64_t res = 0;
     res = operand1 * operand2;
     
 }
 
-result divison(uint32_t operand1, uint32_t operand2, uint16_t flags) {
+result Alu::divison(uint32_t operand1, uint32_t operand2, uint16_t flags) {
 
 }
 
-result leftShift(uint32_t operand, uint32_t numberOfShifts, uint16_t flags) {
+result Alu::leftShift(uint32_t operand, uint32_t numberOfShifts, uint16_t flags) {
 
 }
 
-result rightShift(uint32_t operand, uint16_t numberOfShifts, uint16_t flags) {
+result Alu::rightShift(uint32_t operand, uint16_t numberOfShifts, uint16_t flags) {
     
 }
 
-uint16_t calculateFlags(uint64_t result, uint32_t operand1, uint32_t operand2, uint16_t flags) {
+uint16_t Alu::calculateFlags(uint64_t result, uint32_t operand1, uint32_t operand2, uint16_t flags) {
 
 }
 
-uint8_t getBitWidth(uint16_t flags) {
+uint8_t Alu::getBitWidth(uint16_t flags) {
     uint8_t bitWidth = flags & FLAGS_BIT_WIDTH;
     if(bitWidth == BIT_WIDTH_REPRESENTATION_8) {
         return 0;
@@ -93,12 +93,13 @@ uint8_t getBitWidth(uint16_t flags) {
 }
 
 // methods for Steuerwerk
-void setsigned(uint8_t sign) {
+void Alu::setsigned(uint8_t sign) {
+    //IF-Else
     sign = 0 ? flags |= SIGNED_UNSIGNED_BIT_MASK: flags &= ~SIGNED_UNSIGNED_BIT_MASK;
 }
 
 
-void setBitWidth(uint8_t bitWidth){
+void Alu::setBitWidth(uint8_t bitWidth){
     flags &= ~FLAGS_BIT_WIDTH;
     if (bitWidth == 1) {
         flags |= BIT_WIDTH_REPRESENTATION_16;
